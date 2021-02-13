@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        style 
+            include style.css
+    body
+        div(class="header")
+            img(src="https://i.imgur.com/dN0wIeh.png" alt='Pideals logo')
+            h1 Pideals
+        
+        p(class="welcome") Welcome #{username}!
+
+        p Glad to have you on board at Pideals.  To get started, please confirm your email address by clicking the button below. This link will expire in 48 hours.
+
+        center
+            a(class="button" href=`${host}/verifyemail/${token}`) Confirm Email
+        
+        div(class="footer")
+            p If you’re having trouble with the button above, copy and paste the URL below on your web browser.
+            a(href=`${host}/verifyemail/${token}`) #{`${host}/verifyemail/${token}`}
