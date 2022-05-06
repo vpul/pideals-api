@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 const createError = require('http-errors');
 
 const validationSchema = Joi.object({
