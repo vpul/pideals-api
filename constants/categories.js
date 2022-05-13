@@ -1,1 +1,20 @@
-module.exports = ['Education'];
+module.exports = [
+  'Education',
+  'Movies & Entertainment',
+  'Food & Dining',
+  'Groceries',
+  'Health & Beauty',
+  'Sports & Fitness',
+  'Home & Living',
+  'Electronics',
+  'Fashion',
+  'Shopping',
+  'Transportation',
+  'Travel & Hotels',
+  'Gaming',
+  'Recharge & Utilities',
+  'Banking & Insurance',
+  'Vehicles',
+  'Services',
+  'Other',
+];

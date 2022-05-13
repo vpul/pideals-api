@@ -11,10 +11,10 @@ const findAndOrderByDays = require('./methods/deals/findAndOrderByDays');
 const dealSchema = mongoose.Schema(
   {
     dealLink: { type: String, trim: true, default: null },
-    previewImage: { type: String, trim: true, default: null },
+    dealImage: { type: String, trim: true, default: null },
     title: { type: String, required: true, trim: true },
     description: { type: String, required: true, trim: true }, // deal description in brief eg. 50
-    category: { type: String, required: true },
+    categories: { type: [String], required: true },
     dealExpires: { type: Date, default: null },
     dealType: {
       type: String,
@@ -46,10 +46,16 @@ dealSchema.pre('save', async function (next) {
 
   // const categoryNamesArray = matchedCategories.map((category) => category.name); // turns [{name: 'abc'}] to ['abc']
   // this.categories = categoryNamesArray; // overwrite with matched categories to remove bogus categories
+  this.categories.map((category) => {
+    if (!categories.includes(category)) {
+      return next(createError(400, 'Invalid category'));
+    }
+  });
 
-  if (!categories.includes(this.category)) {
-    return next(createError(400, 'Invalid category'));
-  }
+  // if (!categories.includes(this.category)) {
+  //   return next(createError(400, 'Invalid category'));
+  // }
+
   return next();
 });
 

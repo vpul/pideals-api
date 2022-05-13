@@ -7,7 +7,7 @@ const getPreviewImage = require('../utils/getPreviewImage');
 // webpages can take a while to load due to network latency.
 const asyncSavePreviewImg = async (previewImage, deal) => {
   try {
-    deal.previewImage = await previewImage;
+    deal.dealImage = await previewImage;
     deal.save();
   } catch (error) {
     // sentry logger
@@ -23,7 +23,9 @@ const createDeal = async (req, res, next) => {
       postedBy,
     });
 
-    asyncSavePreviewImg(previewImage, deal);
+    if (!req.body.dealImage) {
+      asyncSavePreviewImg(previewImage, deal);
+    }
 
     return res.status(201).json({
       status: 'success',
