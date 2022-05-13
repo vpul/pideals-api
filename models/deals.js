@@ -15,7 +15,7 @@ const dealSchema = mongoose.Schema(
     title: { type: String, required: true, trim: true },
     description: { type: String, required: true, trim: true }, // deal description in brief eg. 50
     categories: { type: [String], required: true },
-    dealExpires: { type: Date, default: null },
+    dealExpiresAt: { type: Date, default: null },
     dealType: {
       type: String,
       enum: ['freebie', 'discount', 'cashback', 'bonus', 'other'],
